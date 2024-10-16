@@ -1,3 +1,5 @@
+
+
 pipeline {
     agent any
     environment {
@@ -14,11 +16,9 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
-    }
-}
-stage('Deliver for development') {
+        stage('Deliver for development') {
             when {
-                branch 'development'
+                branch 'development' 
             }
             steps {
                 sh './jenkins/scripts/deliver-for-development.sh'
@@ -28,7 +28,7 @@ stage('Deliver for development') {
         }
         stage('Deploy for production') {
             when {
-                branch 'production'
+                branch 'production'  
             }
             steps {
                 sh './jenkins/scripts/deploy-for-production.sh'
@@ -36,7 +36,7 @@ stage('Deliver for development') {
                 sh './jenkins/scripts/kill.sh'
             }
         }
-
-   }
-
+    }
 }
+
+
